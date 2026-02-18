@@ -18,6 +18,19 @@ voice-caller outcomes --show-today
 3. Gauge interest in selling
 4. Log outcome: interested / not interested / wrong number / voicemail / callback requested
 
+## Input / Output
+
+**Input:**
+- Single call: `--phone`, `--owner` (name), `--property` (address)
+- Batch mode: call sheet CSV with columns: `phone`, `owner_name`, `property_address`, `lead_score`
+- Environment: `RETELL_API_KEY` or `BLAND_API_KEY`
+
+**Output:**
+- Outcome JSON per call: `{ "phone", "owner_name", "property_address", "outcome" (interested|not_interested|wrong_number|voicemail|callback), "notes", "duration_seconds", "timestamp" }`
+- Batch mode: outcomes CSV with all call results
+- Exit code 0 on success, 1 on failure
+- stdout: batch summary (total calls, outcomes breakdown)
+
 ## Stack
 - Python 3.14
 - Retell.ai or Bland.ai (voice AI platform)
